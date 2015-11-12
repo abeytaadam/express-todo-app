@@ -12,7 +12,6 @@ $(function() {
 		todoItems = data.todos;
 	});
 
-	function 
 
 
 
