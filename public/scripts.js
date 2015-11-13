@@ -4,8 +4,7 @@ $(function() {
 			var source = $('#todos-template').html();
 			var template = Handlebars.compile(source);
 			// client side page info array
-			var todosCollection = [];
-			console.log("todosCollection",todosCollection);
+			var todosCollection;
 
 
 			function addTodo(todoList) {
@@ -28,19 +27,21 @@ $(function() {
 				event.preventDefault();
 				id = $(this).attr('id');
 				$('#form' + id).toggle();
-				console.log(id);
+				// console.log(id);
 
 				console.log(this);
 			});
 			
-			$('#listCanvas').on('sumbit', '.editDrop', function (event) {
+			$('#listCanvas').on('submit', '.submitEdit', function (event) {
 				event.preventDefault();
-				console.log(id);
-				var todoToUpdate = todosCollection.filter(function(todo) {
+				var todoId = $(this).closest('.glyphicon-pencil').attr('data-id');
+				console.log('TODO ID', todoId);
+				var todoToUpdate = todosCollection.filter(function(todos) {
 					return todos._id == id;
 				})[0];
 				var editTodo = $(this).serialize();
-				console.log(editTodo);
+				console.log("THIS", this);
+				console.log("todotoUpdate", todoToUpdate);
 			
 			$.ajax({
 				type: 'PUT',
@@ -56,11 +57,11 @@ $(function() {
 			$(document).on('click', '.glyphicon-remove', function (event){
 				event.preventDefault();
 				console.log('clicked');
-				var toDelete = todosCollection.filter(function(todo) {
+				var toDelete = todosCollection.filter(function(todos) {
 					return todos._id == id;
 			})[0];
 				var DeleteTodo = $(this);
-				console.log(id);
+				console.log("DELETEID",toDelete);
 
 			$.ajax({
 				type: 'DELETE',
