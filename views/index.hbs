@@ -22,30 +22,43 @@
 				</div>
 				
 				<div class="col-md-12" id="listCanvas">
-						<script id="template" type="text/x-handlebars-template">
-										/{{#each todo}}
+						<script id="todos-template" type="text/x-handlebars-template">
+										\{{#each todos}}
 										<div class="row">
-												<div class="col-md-10"
-															<h3>/{{task}}</h3>
-															<ul><li>/{{description}}</li></ul>
+												<div class="col-md-5">
+															<h3>\{{task}}</h3>
+															<ul><li>\{{description}}</li></ul>
 												</div>
-												<div class="btn-group">
-													<span class="glyphicon glyphicon-pencil btn btn-primary">edit</span>
-													<form class="editDrop" id="form{{_id}}">
-														<div class="form-control">
+												<div class="col-md-3 btn-group">
+													<span class="glyphicon glyphicon-pencil btn btn-primary" id='\{{_id}}'></span>
+													
+													<form class="editDrop" id="form\{{_id}}">
+														<div class="form-group">
 															<input type="text" class="form-control" name="task" placeholder="edit task">
-															<input type="text" class="form-control" name="description" placeholder="edit description"
-															<input type="submit" class="btn btn-primary btn-block submitEdit" id="editTodo{{_id}}">
+															<input type="text" class="form-control" name="description" placeholder="edit description">
+															<input type="submit" class="btn btn-primary btn-block submitEdit" id="editTodo\{{_id}}">
 															</div>
 														</form>
-														<span class="glyphicon glyphicon-remove btn btn-primary" id="deleteBtn" aria-hidden="true"> </span>
+														
+														<span class="glyphicon glyphicon-remove btn btn-primary" id="deleteBtn\{{_id}}" aria-hidden="true"> </span>
 												</div>
 										</div>
 										<br><hr>
-										/{{/each}}
+										\{{/each}}
 						</script>
 				</div>
 			</div>
+			 <div class="row">
+			 	<div class="col-md-3">
+					 <form id="todoForm">
+		            <div class="form-group">
+		              <input type="text" class="form-control" name="task" placeholder="Add new task">
+		              <input type="text" class="form-control" name="description" placeholder="Description of task">
+		              <input type="submit" class="btn btn-info btn-block" id="submitTodo">
+		            </div>
+		       </form>
+		      </div>
+       </div>
 		</div>
 		<!-- jquery -->
 		<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
@@ -54,6 +67,6 @@
 		<!-- handlebars -->
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.3/handlebars.min.js"></script>
 		<!-- custom script -->
-		<script type="text/javascript" src="main.js"></script>
+		<script type="text/javascript" src="scripts.js"></script>
 	</body>
 </html>

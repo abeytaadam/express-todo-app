@@ -1,4 +1,11 @@
+body {
+	background-color: grey;
+}
+
 #listCanvas {
 	background-color: lightgrey;
-	height: 500px;
+}
+
+.editDrop {
+	display:none;
 }
